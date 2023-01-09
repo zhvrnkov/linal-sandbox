@@ -38,12 +38,6 @@ METAL_FUNC float3x3 makeMatrix(thread const float2& x,
                                constant const float3x3& matrix)
 {
     return matrix;
-    auto m = float3x3(1.0);
-    return m;
-    const auto ct = cos(time * 0.5);
-//    m[2] = float3(cosh(8 * x.y * ct) - 1, sinh(2 * x.x * ct), 1.0);
-    m[1] = float3(sin(ct), cos(ct), 0);
-    return m;
 }
 
 kernel void shader(texture2d<float, access::write> destination [[ texture(0) ]],

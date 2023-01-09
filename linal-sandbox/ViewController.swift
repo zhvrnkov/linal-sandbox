@@ -117,19 +117,19 @@ class ViewController: UIViewController {
     private let planeTransformTimeline: KeysTimeline<matrix_float3x3> = {
         typealias IKey = KeysTimeline<matrix_float3x3>.IntermediateKey
         return try! KeysTimeline {
-            IKey(5.0) { t, _ in
+            IKey(4.0) { t, _ in
                 return .identity
+            }
+            IKey(1.0) { t, _ in
                 var matrix = matrix_float3x3(zAngle: Float.pi / 4 * t)
                 matrix[2] = float3(0, 0, 1)
                 return matrix.inverse
             }
-//            IKey(10.0) { t, start in
-//                var matrix = matrix_float3x3(yAngle: Float.pi * t)
-//                return start!.inverse * matrix.inverse * start!
-//            }
-//            IKey(5.0) { t, start in
-//
-//            }
+            IKey(1.0) { t, start in
+                var matrix = matrix_float3x3(xAngle: Float.pi / 4 * t)
+                matrix[2] = float3(0, 0, 1)
+                return matrix.inverse * start!
+            }
 #warning("how to remove this last key frame?")
             IKey(frames: 1) { _, start in
                 return start!
