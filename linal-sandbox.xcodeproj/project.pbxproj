@@ -14,6 +14,7 @@
 		ADA7F9612954AC2600BE72E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADA7F95F2954AC2600BE72E7 /* LaunchScreen.storyboard */; };
 		ADA7F96A2954AC8200BE72E7 /* MTLContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA7F9692954AC8200BE72E7 /* MTLContext.swift */; };
 		ADA7F96C2954AC9500BE72E7 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = ADA7F96B2954AC9500BE72E7 /* Shaders.metal */; };
+		ADA7F96E29575B4B00BE72E7 /* KeysTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA7F96D29575B4B00BE72E7 /* KeysTimeline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		ADA7F9682954AC6700BE72E7 /* linal-sandbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "linal-sandbox.entitlements"; sourceTree = "<group>"; };
 		ADA7F9692954AC8200BE72E7 /* MTLContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLContext.swift; sourceTree = "<group>"; };
 		ADA7F96B2954AC9500BE72E7 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		ADA7F96D29575B4B00BE72E7 /* KeysTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysTimeline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				ADA7F9622954AC2600BE72E7 /* Info.plist */,
 				ADA7F9692954AC8200BE72E7 /* MTLContext.swift */,
 				ADA7F96B2954AC9500BE72E7 /* Shaders.metal */,
+				ADA7F96D29575B4B00BE72E7 /* KeysTimeline.swift */,
 			);
 			path = "linal-sandbox";
 			sourceTree = "<group>";
@@ -104,6 +107,7 @@
 				TargetAttributes = {
 					ADA7F9502954AC2500BE72E7 = {
 						CreatedOnToolsVersion = 14.0.1;
+						LastSwiftMigration = 1400;
 					};
 				};
 			};
@@ -146,6 +150,7 @@
 				ADA7F96A2954AC8200BE72E7 /* MTLContext.swift in Sources */,
 				ADA7F9552954AC2500BE72E7 /* AppDelegate.swift in Sources */,
 				ADA7F9572954AC2500BE72E7 /* SceneDelegate.swift in Sources */,
+				ADA7F96E29575B4B00BE72E7 /* KeysTimeline.swift in Sources */,
 				ADA7F96C2954AC9500BE72E7 /* Shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +288,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "linal-sandbox/linal-sandbox.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -304,6 +310,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -314,6 +321,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "linal-sandbox/linal-sandbox.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
