@@ -162,11 +162,14 @@ extension MTLComputeCommandEncoder {
     func dispatch2d(state: MTLComputePipelineState,
                     covering size: MTLSize,
                     threadgroupSize: MTLSize? = nil) {
-        let tgSize = threadgroupSize ?? state.max2dThreadgroupSize
+        var tgSize = threadgroupSize ?? state.max2dThreadgroupSize
         
         let count = MTLSize(width: (size.width + tgSize.width - 1) / tgSize.width,
                             height: (size.height + tgSize.height - 1) / tgSize.height,
                             depth: 1)
+        tgSize.width = min(count.width, tgSize.width)
+        tgSize.height = min(count.height, tgSize.height)
+        tgSize.depth = min(count.depth, tgSize.depth)
         
         self.setComputePipelineState(state)
         self.dispatchThreadgroups(count, threadsPerThreadgroup: tgSize)
@@ -214,5 +217,15 @@ extension MTLTexture {
         let descriptor = self.descriptor
         descriptor.storageMode = .private
         return descriptor
+    }
+}
+
+extension MTLRenderCommandEncoder {
+    func set<T>(vertexValue: inout T, index: Int) {
+        setVertexBytes(&vertexValue, length: MemoryLayout<T>.stride, index: index)
+    }
+    
+    func set<T>(fragmentValue: inout T, index: Int) {
+        setFragmentBytes(&fragmentValue, length: MemoryLayout<T>.stride, index: index)
     }
 }

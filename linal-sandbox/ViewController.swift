@@ -54,6 +54,13 @@ extension matrix_float3x3 {
 
 class ViewController: UIViewController {
     
+    private lazy var grid = GridKernel(context: context)
+    private lazy var drawCircles = CirclesKernel(context: context)
+    private lazy var graph = GraphKernel(context: context, f: "smoothstep(0, 2.0, x)")
+    private lazy var plot: PlotKernel = LinePlotKernel(context: context)
+    private lazy var field: PlotKernel = FieldKernel(context: context)
+    private lazy var arrows: PlotKernel = ArrowsKernel(context: context)
+    
     private(set) lazy var pipelineState: MTLComputePipelineState = {
         return try! context.makeComputePipelineState(functionName: "shader")
     }()
@@ -82,6 +89,16 @@ class ViewController: UIViewController {
             center = matrix * center
             let circle = vector_float4(x: center.z, y: center.y, z: radius, w: fstep * step)
             return circle
+        }
+    }()
+    private lazy var points: [vector_float2] = {
+        let ub = 500
+        return (0...ub).map { i in
+            let range = Float(-4.0)...Float(4.0)
+            let length = range.upperBound - range.lowerBound
+            var x = (Float(i) / Float(ub)) * length + range.lowerBound
+            
+            return float2(x, cos(10 * x))
         }
     }()
     private let circleTransformTimeline: KeysTimeline<matrix_float3x3> = {
@@ -117,19 +134,19 @@ class ViewController: UIViewController {
     private let planeTransformTimeline: KeysTimeline<matrix_float3x3> = {
         typealias IKey = KeysTimeline<matrix_float3x3>.IntermediateKey
         return try! KeysTimeline {
-            IKey(4.0) { t, _ in
-                return .identity
-            }
             IKey(1.0) { t, _ in
-                var matrix = matrix_float3x3(zAngle: Float.pi / 4 * t)
-                matrix[2] = float3(0, 0, 1)
-                return matrix.inverse
+                return (1.0 + (3.0 * t)) * .identity
             }
-            IKey(1.0) { t, start in
-                var matrix = matrix_float3x3(xAngle: Float.pi / 4 * t)
-                matrix[2] = float3(0, 0, 1)
-                return matrix.inverse * start!
-            }
+//            IKey(1.0) { t, start in
+//                var matrix = matrix_float3x3(zAngle: Float.pi / 4 * t)
+//                matrix[2] = float3(0, 0, 1)
+//                return matrix * start!
+//            }
+//            IKey(1.0) { t, start in
+//                var matrix = matrix_float3x3.identity
+//                matrix[2] = float3(0.1 * t, 0, 1)
+//                return matrix * start!
+//            }
 #warning("how to remove this last key frame?")
             IKey(frames: 1) { _, start in
                 return start!
@@ -170,28 +187,61 @@ extension ViewController: MTKViewDelegate {
             return
         }
         let destinationTexture = drawable.texture
-        let encoder = commandBuffer.makeComputeCommandEncoder()!
-        var fTime = Float(time.seconds)
-        var mousePosition = mousePosition
+        let fTime = Float(time.seconds)
+        let mousePosition = mousePosition
         
-        var matrix = planeTransformTimeline.act(time: time)
+        let matrix = planeTransformTimeline.act(time: time)
         let circleMatrix = circleTransformTimeline.act(time: time)
-        var circles = {
+        let circles = {
             let radius: Float = 0.05
             let progress = fTime * 0.1
             var center = vector_float3(x: 1.0, y: 0.0, z: 0.0)
             center = circleMatrix * center
-            let circle = vector_float4(x: center.x, y: center.y, z: radius, w: fmodf(progress, 1.0))
+            let circle = vector_float2(x: center.x, y: center.y)
             return [circle]
         }()
         
-        encoder.set(value: &mousePosition, index: 0)
-        encoder.set(value: &fTime, index: 1)
-        encoder.set(array: &circles, pointerIndex: 2, countIndex: 3)
-        encoder.set(value: &matrix, index: 4)
-        encoder.set(textures: [destinationTexture])
-        encoder.dispatch2d(state: pipelineState, size: destinationTexture.size)
-        encoder.endEncoding()
+        grid.time = fTime
+        grid.matrix = matrix
+        grid(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+        
+        let t = pow(cos(0.1 * fTime), 2)
+        arrows.time = fTime
+        arrows.matrix = matrix
+        arrows.points = [float4(lowHalf: .zero, highHalf: mix(.one, -.one, t: t))]
+        arrows(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+        
+//        field.time = fTime
+//        field.matrix = matrix
+//        field(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+        
+//        drawCircles.time = fTime
+//        drawCircles.matrix = matrix
+//        drawCircles.circles = circles
+//        drawCircles(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+        
+        graph.time = fTime
+        graph.matrix = matrix
+        graph(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+        
+//        let space = linspace(-4, 4, 100)
+//        plot.time = fTime
+//        plot.matrix = matrix
+//
+//        let coss = space.map { float2($0, cos($0)) }
+//        let sins = space.map { float2($0, sin(2.0 * $0)) }
+//
+//        plot.color = float4(1.0, 0, 0, 1.0)
+//        plot.points = sins
+//        plot(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+//
+//        plot.color = float4(0, 1.0, 0, 1.0)
+//        plot.points = coss
+//        plot(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+//
+//        plot.color = float4(0, 0.0, 1.0, 1.0)
+//        plot.points = zip(sins, coss).map { s, c in float2(s.x, simd_mix(s.y, c.y, 0.5)) }
+//        plot(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
         
         commandBuffer.present(drawable)
         commandBuffer.commit()
@@ -217,5 +267,16 @@ extension UIView {
                           height: bounds.height - safeAreaInsets.verticalInsets)
         return .init(origin: origin, size: size)
 
+    }
+}
+
+func linspace(_ lowerBound: Float, _ upperBound: Float, _ count: Int = 10) -> [Float] {
+    guard count != 1 else {
+        return [lowerBound]
+    }
+    let length = upperBound - lowerBound
+    let step = length / Float(count - 1)
+    return (0..<count).map { i in
+        return lowerBound + Float(i) * step
     }
 }

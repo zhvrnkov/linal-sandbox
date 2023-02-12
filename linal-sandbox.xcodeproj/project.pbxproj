@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD3BE00D298A48FA005F60D6 /* Arrows.metal in Sources */ = {isa = PBXBuildFile; fileRef = AD3BE00C298A48FA005F60D6 /* Arrows.metal */; };
+		AD3BE00F298A4DEB005F60D6 /* ArrowsKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3BE00E298A4DEB005F60D6 /* ArrowsKernel.swift */; };
+		AD3BE012298A6009005F60D6 /* FieldKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3BE011298A6009005F60D6 /* FieldKernel.swift */; };
+		AD3BE014298A69BC005F60D6 /* Field.metal in Sources */ = {isa = PBXBuildFile; fileRef = AD3BE013298A69BC005F60D6 /* Field.metal */; };
+		AD4598D5297FF134005364FD /* LinePlotKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4598D4297FF134005364FD /* LinePlotKernel.swift */; };
+		AD4598D7297FF16E005364FD /* DotsPlotKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4598D6297FF16E005364FD /* DotsPlotKernel.swift */; };
+		AD4598D9297FF23C005364FD /* DotsPlot.metal in Sources */ = {isa = PBXBuildFile; fileRef = AD4598D8297FF23C005364FD /* DotsPlot.metal */; };
 		ADA7F9552954AC2500BE72E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA7F9542954AC2500BE72E7 /* AppDelegate.swift */; };
 		ADA7F9572954AC2500BE72E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA7F9562954AC2500BE72E7 /* SceneDelegate.swift */; };
 		ADA7F9592954AC2500BE72E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA7F9582954AC2500BE72E7 /* ViewController.swift */; };
@@ -15,9 +22,26 @@
 		ADA7F96A2954AC8200BE72E7 /* MTLContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA7F9692954AC8200BE72E7 /* MTLContext.swift */; };
 		ADA7F96C2954AC9500BE72E7 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = ADA7F96B2954AC9500BE72E7 /* Shaders.metal */; };
 		ADA7F96E29575B4B00BE72E7 /* KeysTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA7F96D29575B4B00BE72E7 /* KeysTimeline.swift */; };
+		ADD06B672976C9F200CF2075 /* PlotKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD06B662976C9F200CF2075 /* PlotKernel.swift */; };
+		ADD06B692976C9F800CF2075 /* LinePlot.metal in Sources */ = {isa = PBXBuildFile; fileRef = ADD06B682976C9F800CF2075 /* LinePlot.metal */; };
+		ADF7BD4229753E69007F0D6D /* GridKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF7BD4129753E69007F0D6D /* GridKernel.swift */; };
+		ADF7BD4429753F12007F0D6D /* Grid.metal in Sources */ = {isa = PBXBuildFile; fileRef = ADF7BD4329753F12007F0D6D /* Grid.metal */; };
+		ADF7BD4629753F7B007F0D6D /* Misc.metal in Sources */ = {isa = PBXBuildFile; fileRef = ADF7BD4529753F7B007F0D6D /* Misc.metal */; };
+		ADF7BD49297540B3007F0D6D /* Circles.metal in Sources */ = {isa = PBXBuildFile; fileRef = ADF7BD48297540B3007F0D6D /* Circles.metal */; };
+		ADF7BD4B297540BB007F0D6D /* CirclesKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF7BD4A297540BB007F0D6D /* CirclesKernel.swift */; };
+		ADF7BD4D29754165007F0D6D /* Common.metal in Sources */ = {isa = PBXBuildFile; fileRef = ADF7BD4C29754165007F0D6D /* Common.metal */; };
+		ADF7BD502975441A007F0D6D /* Graph.metal in Sources */ = {isa = PBXBuildFile; fileRef = ADF7BD4F2975441A007F0D6D /* Graph.metal */; };
+		ADF7BD52297544E9007F0D6D /* GraphKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF7BD51297544E9007F0D6D /* GraphKernel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD3BE00C298A48FA005F60D6 /* Arrows.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Arrows.metal; sourceTree = "<group>"; };
+		AD3BE00E298A4DEB005F60D6 /* ArrowsKernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowsKernel.swift; sourceTree = "<group>"; };
+		AD3BE011298A6009005F60D6 /* FieldKernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldKernel.swift; sourceTree = "<group>"; };
+		AD3BE013298A69BC005F60D6 /* Field.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Field.metal; sourceTree = "<group>"; };
+		AD4598D4297FF134005364FD /* LinePlotKernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePlotKernel.swift; sourceTree = "<group>"; };
+		AD4598D6297FF16E005364FD /* DotsPlotKernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsPlotKernel.swift; sourceTree = "<group>"; };
+		AD4598D8297FF23C005364FD /* DotsPlot.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DotsPlot.metal; sourceTree = "<group>"; };
 		ADA7F9512954AC2500BE72E7 /* linal-sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "linal-sandbox.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADA7F9542954AC2500BE72E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADA7F9562954AC2500BE72E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +53,16 @@
 		ADA7F9692954AC8200BE72E7 /* MTLContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLContext.swift; sourceTree = "<group>"; };
 		ADA7F96B2954AC9500BE72E7 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		ADA7F96D29575B4B00BE72E7 /* KeysTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysTimeline.swift; sourceTree = "<group>"; };
+		ADD06B662976C9F200CF2075 /* PlotKernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotKernel.swift; sourceTree = "<group>"; };
+		ADD06B682976C9F800CF2075 /* LinePlot.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = LinePlot.metal; sourceTree = "<group>"; };
+		ADF7BD4129753E69007F0D6D /* GridKernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridKernel.swift; sourceTree = "<group>"; };
+		ADF7BD4329753F12007F0D6D /* Grid.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Grid.metal; sourceTree = "<group>"; };
+		ADF7BD4529753F7B007F0D6D /* Misc.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Misc.metal; sourceTree = "<group>"; };
+		ADF7BD48297540B3007F0D6D /* Circles.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Circles.metal; sourceTree = "<group>"; };
+		ADF7BD4A297540BB007F0D6D /* CirclesKernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesKernel.swift; sourceTree = "<group>"; };
+		ADF7BD4C29754165007F0D6D /* Common.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Common.metal; sourceTree = "<group>"; };
+		ADF7BD4F2975441A007F0D6D /* Graph.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Graph.metal; sourceTree = "<group>"; };
+		ADF7BD51297544E9007F0D6D /* GraphKernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphKernel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +76,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD3BE008298A47AA005F60D6 /* Field */ = {
+			isa = PBXGroup;
+			children = (
+				AD3BE011298A6009005F60D6 /* FieldKernel.swift */,
+				AD3BE013298A69BC005F60D6 /* Field.metal */,
+			);
+			path = Field;
+			sourceTree = "<group>";
+		};
+		AD3BE00B298A48F3005F60D6 /* Arrows */ = {
+			isa = PBXGroup;
+			children = (
+				AD3BE00C298A48FA005F60D6 /* Arrows.metal */,
+				AD3BE00E298A4DEB005F60D6 /* ArrowsKernel.swift */,
+			);
+			path = Arrows;
+			sourceTree = "<group>";
+		};
 		ADA7F9482954AC2500BE72E7 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +113,12 @@
 		ADA7F9532954AC2500BE72E7 /* linal-sandbox */ = {
 			isa = PBXGroup;
 			children = (
+				AD3BE00B298A48F3005F60D6 /* Arrows */,
+				AD3BE008298A47AA005F60D6 /* Field */,
+				ADD06B652976C9EA00CF2075 /* Plot */,
+				ADF7BD4E29754413007F0D6D /* Graph */,
+				ADF7BD4729754089007F0D6D /* Circles */,
+				ADF7BD4029753E5E007F0D6D /* Grid */,
 				ADA7F9682954AC6700BE72E7 /* linal-sandbox.entitlements */,
 				ADA7F9542954AC2500BE72E7 /* AppDelegate.swift */,
 				ADA7F9562954AC2500BE72E7 /* SceneDelegate.swift */,
@@ -71,8 +129,49 @@
 				ADA7F9692954AC8200BE72E7 /* MTLContext.swift */,
 				ADA7F96B2954AC9500BE72E7 /* Shaders.metal */,
 				ADA7F96D29575B4B00BE72E7 /* KeysTimeline.swift */,
+				ADF7BD4529753F7B007F0D6D /* Misc.metal */,
+				ADF7BD4C29754165007F0D6D /* Common.metal */,
 			);
 			path = "linal-sandbox";
+			sourceTree = "<group>";
+		};
+		ADD06B652976C9EA00CF2075 /* Plot */ = {
+			isa = PBXGroup;
+			children = (
+				ADD06B662976C9F200CF2075 /* PlotKernel.swift */,
+				ADD06B682976C9F800CF2075 /* LinePlot.metal */,
+				AD4598D4297FF134005364FD /* LinePlotKernel.swift */,
+				AD4598D6297FF16E005364FD /* DotsPlotKernel.swift */,
+				AD4598D8297FF23C005364FD /* DotsPlot.metal */,
+			);
+			path = Plot;
+			sourceTree = "<group>";
+		};
+		ADF7BD4029753E5E007F0D6D /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				ADF7BD4129753E69007F0D6D /* GridKernel.swift */,
+				ADF7BD4329753F12007F0D6D /* Grid.metal */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		ADF7BD4729754089007F0D6D /* Circles */ = {
+			isa = PBXGroup;
+			children = (
+				ADF7BD48297540B3007F0D6D /* Circles.metal */,
+				ADF7BD4A297540BB007F0D6D /* CirclesKernel.swift */,
+			);
+			path = Circles;
+			sourceTree = "<group>";
+		};
+		ADF7BD4E29754413007F0D6D /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				ADF7BD4F2975441A007F0D6D /* Graph.metal */,
+				ADF7BD51297544E9007F0D6D /* GraphKernel.swift */,
+			);
+			path = Graph;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,10 +246,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADA7F9592954AC2500BE72E7 /* ViewController.swift in Sources */,
+				AD3BE00D298A48FA005F60D6 /* Arrows.metal in Sources */,
+				ADF7BD4429753F12007F0D6D /* Grid.metal in Sources */,
+				ADF7BD4D29754165007F0D6D /* Common.metal in Sources */,
+				AD4598D9297FF23C005364FD /* DotsPlot.metal in Sources */,
+				ADF7BD4629753F7B007F0D6D /* Misc.metal in Sources */,
 				ADA7F96A2954AC8200BE72E7 /* MTLContext.swift in Sources */,
+				AD4598D5297FF134005364FD /* LinePlotKernel.swift in Sources */,
+				AD3BE014298A69BC005F60D6 /* Field.metal in Sources */,
 				ADA7F9552954AC2500BE72E7 /* AppDelegate.swift in Sources */,
+				AD4598D7297FF16E005364FD /* DotsPlotKernel.swift in Sources */,
 				ADA7F9572954AC2500BE72E7 /* SceneDelegate.swift in Sources */,
+				AD3BE012298A6009005F60D6 /* FieldKernel.swift in Sources */,
+				ADF7BD4229753E69007F0D6D /* GridKernel.swift in Sources */,
+				ADF7BD49297540B3007F0D6D /* Circles.metal in Sources */,
+				ADF7BD52297544E9007F0D6D /* GraphKernel.swift in Sources */,
+				ADD06B692976C9F800CF2075 /* LinePlot.metal in Sources */,
+				ADF7BD502975441A007F0D6D /* Graph.metal in Sources */,
+				ADF7BD4B297540BB007F0D6D /* CirclesKernel.swift in Sources */,
+				ADD06B672976C9F200CF2075 /* PlotKernel.swift in Sources */,
 				ADA7F96E29575B4B00BE72E7 /* KeysTimeline.swift in Sources */,
+				AD3BE00F298A4DEB005F60D6 /* ArrowsKernel.swift in Sources */,
 				ADA7F96C2954AC9500BE72E7 /* Shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
