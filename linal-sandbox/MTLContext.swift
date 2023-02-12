@@ -150,6 +150,20 @@ extension MTLComputeCommandEncoder {
         set(value: &count, index: countIndex)
     }
     
+    func dispatch1d(state: MTLComputePipelineState,
+                    covering size: Int,
+                    threadgroupWidth: Int? = nil) {
+        let tgWidth = threadgroupWidth ?? state.threadExecutionWidth
+        let tgSize = MTLSize(width: tgWidth, height: 1, depth: 1)
+        
+        let count = MTLSize(width: (size + tgWidth - 1) / tgWidth,
+                            height: 1,
+                            depth: 1)
+        
+        self.setComputePipelineState(state)
+        self.dispatchThreadgroups(count, threadsPerThreadgroup: tgSize)
+    }
+    
     func dispatch2d(state: MTLComputePipelineState, size: MTLSize) {
         if device.supports(feature: .nonUniformThreadgroups) {
             dispatch2d(state: state, exactly: size)
@@ -167,9 +181,6 @@ extension MTLComputeCommandEncoder {
         let count = MTLSize(width: (size.width + tgSize.width - 1) / tgSize.width,
                             height: (size.height + tgSize.height - 1) / tgSize.height,
                             depth: 1)
-        tgSize.width = min(count.width, tgSize.width)
-        tgSize.height = min(count.height, tgSize.height)
-        tgSize.depth = min(count.depth, tgSize.depth)
         
         self.setComputePipelineState(state)
         self.dispatchThreadgroups(count, threadsPerThreadgroup: tgSize)

@@ -205,24 +205,24 @@ extension ViewController: MTKViewDelegate {
         grid.matrix = matrix
         grid(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
         
-        let t = pow(cos(0.1 * fTime), 2)
-        arrows.time = fTime
-        arrows.matrix = matrix
-        arrows.points = [float4(lowHalf: .zero, highHalf: mix(.one, -.one, t: t))]
-        arrows(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+//        let t = pow(cos(0.1 * fTime), 2)
+//        arrows.time = fTime
+//        arrows.matrix = matrix
+//        arrows.points = [float4(lowHalf: .zero, highHalf: mix(.one, -.one, t: t))]
+//        arrows(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
         
-//        field.time = fTime
-//        field.matrix = matrix
-//        field(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+        field.time = fTime
+        field.matrix = matrix
+        field(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
         
 //        drawCircles.time = fTime
 //        drawCircles.matrix = matrix
 //        drawCircles.circles = circles
 //        drawCircles(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
         
-        graph.time = fTime
-        graph.matrix = matrix
-        graph(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+//        graph.time = fTime
+//        graph.matrix = matrix
+//        graph(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
         
 //        let space = linspace(-4, 4, 100)
 //        plot.time = fTime

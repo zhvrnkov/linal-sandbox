@@ -19,10 +19,10 @@ float2 E(float2 pos, float2 mpos, float m)
 
 float2 field(const float2 position, const float time)
 {
-//    return 0.35 * float2(sin(position.y + time), sin(position.x + time));
+    return 0.35 * float2(sin(position.y + time), sin(position.x + time));
 
     float m1 = 0.1 * cos(0.5 * time);
-    float m2 = 0.1 * -cos(0.5 * time) * 0;
+    float m2 = 0.1 * -cos(0.5 * time);
     const float2 mpos1 = float2(-2, 0);
     const float2 mpos2 = float2(2, 0);
     

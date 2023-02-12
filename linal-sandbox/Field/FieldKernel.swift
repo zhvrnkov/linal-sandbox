@@ -63,9 +63,9 @@ class FieldKernel: ArrowsKernel {
         encoder.setBuffer(positionsBuffer, offset: 0, index: 0)
         encoder.setBuffer(pointsBuffer, offset: 0, index: 1)
         encoder.set(value: &time, index: 2)
-        encoder.dispatch2d(
+        encoder.dispatch1d(
             state: fieldPipelineState,
-            covering: .init(width: pointsCount, height: 1, depth: 1)
+            covering: pointsCount
         )
         encoder.endEncoding()
         

@@ -70,3 +70,7 @@ METAL_FUNC float3 hsv2rgb(float3 hsv) {
 METAL_FUNC bool fInRange(float f, float min, float max) {
     return f > min && f < max;
 }
+
+METAL_FUNC float2 perpendicular(const float2 in) {
+    return float2(-in.y, in.x);
+}
