@@ -30,7 +30,9 @@ using namespace metal;
 [[visible]]
 float f(const float x, const float time)
 {
-    return \(f);
+    float y;
+    \(f)
+    return y;
 }
 """
         let library = try! context.device.makeLibrary(source: source, options: nil)

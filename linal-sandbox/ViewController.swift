@@ -56,7 +56,8 @@ class ViewController: UIViewController {
     
     private lazy var grid = GridKernel(context: context)
     private lazy var drawCircles = CirclesKernel(context: context)
-    private lazy var graph = GraphKernel(context: context, f: "smoothstep(0, 2.0, x)")
+    private lazy var graph = GraphKernel(context: context, f: "if(x<0.5){y=x*x*2.0;}else{y=1.0-pow(1.0-x, 2.0)*2.0;}")
+    private lazy var graph2 = GraphKernel(context: context, f: "y = smoothstep(0.05, 0.95, x);")
     private lazy var plot: PlotKernel = LinePlotKernel(context: context)
     private lazy var field: PlotKernel = FieldKernel(context: context)
     private lazy var arrows: PlotKernel = ArrowsKernel(context: context)
@@ -211,18 +212,24 @@ extension ViewController: MTKViewDelegate {
 //        arrows.points = [float4(lowHalf: .zero, highHalf: mix(.one, -.one, t: t))]
 //        arrows(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
         
-        field.time = fTime
-        field.matrix = matrix
-        field(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+//        field.time = fTime
+//        field.matrix = matrix
+//        field(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
         
 //        drawCircles.time = fTime
 //        drawCircles.matrix = matrix
 //        drawCircles.circles = circles
 //        drawCircles(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
         
-//        graph.time = fTime
-//        graph.matrix = matrix
-//        graph(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+        graph.color = vector_float4(x: 1.0, y: 0, z: 0, w: 1.0)
+        graph.time = fTime
+        graph.matrix = matrix
+        graph(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
+        
+        graph2.color = vector_float4(x: 0, y: 1.0, z: 0, w: 1.0)
+        graph2.time = fTime
+        graph2.matrix = matrix
+        graph2(commandBuffer: commandBuffer, destinationTexture: destinationTexture)
         
 //        let space = linspace(-4, 4, 100)
 //        plot.time = fTime
