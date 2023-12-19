@@ -32,7 +32,7 @@ METAL_FUNC void drawGrid(
     }
 }
 
-kernel void grid(texture2d<float, access::write> destination [[ texture(0) ]],
+kernel void grid(texture2d<float, access::read_write> destination [[ texture(0) ]],
                  constant const float& time [[ buffer(0) ]],
                  constant const float3x3& uMatrix [[ buffer(1) ]],
                  uint2 pos [[ thread_position_in_grid ]]) {
@@ -41,6 +41,7 @@ kernel void grid(texture2d<float, access::write> destination [[ texture(0) ]],
     const float ltFactor = maxSpaceScaleFactor(matrix);
 
     float4 output = float4(0, 0, 0, 1.0);
+//    float4 output = destination.read(pos); // float4(0, 0, 0, 1.0);
     drawGrid(&output, float3(0.15), x, 2.0, ltFactor);
     drawGrid(&output, float3(0.5), x, 1.0, ltFactor);
     drawGrid(&output, float3(1.0), x, 0.0000001, ltFactor);

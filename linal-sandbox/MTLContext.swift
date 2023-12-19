@@ -240,3 +240,27 @@ extension MTLRenderCommandEncoder {
         setFragmentBytes(&fragmentValue, length: MemoryLayout<T>.stride, index: index)
     }
 }
+
+extension MTLCommandBuffer {
+    func clear(texture: MTLTexture, color: MTLClearColor = .init(red: 0, green: 0, blue: 0, alpha: 0)) {
+        let descriptor = MTLRenderPassDescriptor()
+        let attachDescriptor = MTLRenderPassColorAttachmentDescriptor()
+        attachDescriptor.texture = texture
+        attachDescriptor.loadAction = .clear
+        attachDescriptor.storeAction = .store
+        attachDescriptor.clearColor = color
+
+        descriptor.colorAttachments[0] = attachDescriptor
+
+        render(descriptor: descriptor) { _ in }
+    }
+    func render(descriptor: MTLRenderPassDescriptor, _ work: (_ encoder: MTLRenderCommandEncoder) -> Void) {
+        guard let encoder = makeRenderCommandEncoder(descriptor: descriptor) else {
+            print(Self.self, #function, "no render encoder")
+            return
+        }
+        work(encoder)
+        encoder.endEncoding()
+    }
+
+}

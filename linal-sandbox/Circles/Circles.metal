@@ -18,9 +18,16 @@ kernel void circles(texture2d<float, access::read_write> destination [[ texture(
     const auto x = makeX(pos, destination, time, uMatrix);
     float4 output = destination.read(pos);
     for (int i = 0; i < circlesCount; i++) {
-        const float2 center = (float3(circles[i].xy, 1.0)).xy;
+        const float2 center = circles[i].xy;
         const float radius = circles[i].z;
-        const float3 color = hsv2rgb(float3(circles[i].w, 1.0, 1.0));
+//        const float3 color = hsv2rgb(float3(circles[i].w, 1.0, 1.0));
+        float3 color;
+        {
+            const float level = center.y * M_PI_F / 2.0;
+            color.r = sin(level);
+            color.g = sin(level*2.);
+            color.b = cos(level);
+        }
         const float centerXDistance = length(center - x);
         if (centerXDistance <= radius) {
             output.rgb = color;

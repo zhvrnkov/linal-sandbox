@@ -19,17 +19,27 @@ float2 E(float2 pos, float2 mpos, float m)
 
 float2 field(const float2 position, const float time)
 {
-    return 0.35 * float2(sin(position.y + time), sin(position.x + time));
+    constexpr const float mu = 0.1;
+    constexpr const float g = 9.8;
+    constexpr const float L = 2.0;
 
-    float m1 = 0.1 * cos(0.5 * time);
-    float m2 = 0.1 * -cos(0.5 * time);
-    const float2 mpos1 = float2(-2, 0);
-    const float2 mpos2 = float2(2, 0);
-    
-    const auto E1 = E(position, mpos1, m1);
-    const auto E2 = E(position, mpos2, m2);
-    
-    return E1 + E2;
+    const float theta = position.x;
+    const float thetaDot = position.y;
+    const float thetaDotDot = -mu * thetaDot - (g / L) * sin(theta);
+
+    const float2 vector = float2(thetaDot, thetaDotDot);
+    return normalize(vector) * 0.25;
+//    return 0.35 * float2(sin(position.y + time), sin(position.x + time));
+//
+//    float m1 = 0.1 * cos(0.5 * time);
+//    float m2 = 0.1 * -cos(0.5 * time);
+//    const float2 mpos1 = float2(-2, 0);
+//    const float2 mpos2 = float2(2, 0);
+//    
+//    const auto E1 = E(position, mpos1, m1);
+//    const auto E2 = E(position, mpos2, m2);
+//    
+//    return E1 + E2;
 }
 
 kernel void field_kernel(

@@ -23,7 +23,7 @@ class FieldKernel: ArrowsKernel {
     
     private lazy var positionsBuffer: MTLBuffer = {
         let step: Float = 0.25
-        let stride = stride(from: Float(-4), through: Float(4), by: step)
+        let stride = stride(from: Float(-16), through: Float(16), by: step)
         var positions = stride.reduce(into: [vector_float2]()) { acc, x in
             acc += stride.map { y in
                 let tail = vector_float2(x: Float(x), y: Float(y))

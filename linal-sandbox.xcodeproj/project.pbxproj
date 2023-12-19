@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36FF3C472B31939200236DB1 /* BezierPlotKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FF3C462B31939200236DB1 /* BezierPlotKernel.swift */; };
+		36FF3C492B31939C00236DB1 /* BezierPlot.metal in Sources */ = {isa = PBXBuildFile; fileRef = 36FF3C482B31939C00236DB1 /* BezierPlot.metal */; };
 		AD3BE00D298A48FA005F60D6 /* Arrows.metal in Sources */ = {isa = PBXBuildFile; fileRef = AD3BE00C298A48FA005F60D6 /* Arrows.metal */; };
 		AD3BE00F298A4DEB005F60D6 /* ArrowsKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3BE00E298A4DEB005F60D6 /* ArrowsKernel.swift */; };
 		AD3BE012298A6009005F60D6 /* FieldKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3BE011298A6009005F60D6 /* FieldKernel.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36FF3C462B31939200236DB1 /* BezierPlotKernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPlotKernel.swift; sourceTree = "<group>"; };
+		36FF3C482B31939C00236DB1 /* BezierPlot.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BezierPlot.metal; sourceTree = "<group>"; };
 		AD3BE00C298A48FA005F60D6 /* Arrows.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Arrows.metal; sourceTree = "<group>"; };
 		AD3BE00E298A4DEB005F60D6 /* ArrowsKernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowsKernel.swift; sourceTree = "<group>"; };
 		AD3BE011298A6009005F60D6 /* FieldKernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldKernel.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 				AD4598D4297FF134005364FD /* LinePlotKernel.swift */,
 				AD4598D6297FF16E005364FD /* DotsPlotKernel.swift */,
 				AD4598D8297FF23C005364FD /* DotsPlot.metal */,
+				36FF3C462B31939200236DB1 /* BezierPlotKernel.swift */,
+				36FF3C482B31939C00236DB1 /* BezierPlot.metal */,
 			);
 			path = Plot;
 			sourceTree = "<group>";
@@ -255,6 +261,7 @@
 				AD4598D5297FF134005364FD /* LinePlotKernel.swift in Sources */,
 				AD3BE014298A69BC005F60D6 /* Field.metal in Sources */,
 				ADA7F9552954AC2500BE72E7 /* AppDelegate.swift in Sources */,
+				36FF3C472B31939200236DB1 /* BezierPlotKernel.swift in Sources */,
 				AD4598D7297FF16E005364FD /* DotsPlotKernel.swift in Sources */,
 				ADA7F9572954AC2500BE72E7 /* SceneDelegate.swift in Sources */,
 				AD3BE012298A6009005F60D6 /* FieldKernel.swift in Sources */,
@@ -266,6 +273,7 @@
 				ADF7BD4B297540BB007F0D6D /* CirclesKernel.swift in Sources */,
 				ADD06B672976C9F200CF2075 /* PlotKernel.swift in Sources */,
 				ADA7F96E29575B4B00BE72E7 /* KeysTimeline.swift in Sources */,
+				36FF3C492B31939C00236DB1 /* BezierPlot.metal in Sources */,
 				AD3BE00F298A4DEB005F60D6 /* ArrowsKernel.swift in Sources */,
 				ADA7F96C2954AC9500BE72E7 /* Shaders.metal in Sources */,
 			);
